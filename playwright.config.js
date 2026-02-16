@@ -1,18 +1,12 @@
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig } from '@playwright/test';
 
-module.exports = defineConfig({
-  testDir: './tests',
-  timeout: 60000,
+export default defineConfig({
   use: {
-    baseURL: 'https://mansajewellery.com',
-    headless: false,
-    slowMo: 9000,
-    trace: 'on-first-retry',
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ],
+    headless: false,        // show browser
+    viewport: null,         // allow full screen
+    launchOptions: {
+      args: ['--start-maximized'] // true fullscreen
+    }
+  }
 });
+
